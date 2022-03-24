@@ -13,8 +13,8 @@ public class GreetingController
 	private final AtomicLong counter = new AtomicLong();
 	private final List<Greeting> _greetings = new ArrayList<>();
 
-	@GetMapping("/greetings")
-	public List<Greeting> greet(@RequestParam(value = "name", defaultValue = "World") final String nameToGreet)
+	@GetMapping(value = "/greetings")
+	public Greeting greet(@RequestParam(value = "name", defaultValue = "World") final String nameToGreet)
 	{
 		final Greeting greeting = Greeting.builder()
 			.id(counter.incrementAndGet())
@@ -23,6 +23,6 @@ public class GreetingController
 
 		_greetings.add(greeting);
 
-		return _greetings;
+		return greeting;
 	}
 }
